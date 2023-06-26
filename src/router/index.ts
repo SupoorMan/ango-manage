@@ -9,12 +9,35 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      redirect: "/index",
+      children: [
+        {
+          path: '/index',
+          name: "index",
+          component: () => import('../components/Index.vue')
+        },
+        {
+          path: '/builder',
+          name: "builder",
+          component: () => import('../components/Builder.vue')
+        },
+      ]
     }, {
       path: '/login',
       name: 'login',
       component: LoginView,
-      children: [{
+      redirect: "/auth",
+      children: [
+        {
+          path: '/auth',
+          name: "auth",
+          component: () => import('../components/Login.vue')
+        }, {
+          path: '/register',
+          name: "register",
+          component: () => import('../views/RegisterView.vue')
+        }, {
           path: '/test',
           name: "test",
           component: () => import('../views/TestView.vue')
@@ -23,9 +46,6 @@ const router = createRouter({
     }, {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     }
   ]
