@@ -19,18 +19,18 @@ const navi = [
   },
   {
     name: ref(),
-    rame: '设置',
+    rame: '游戏',
     icon: 'Bell',
     style: ref('transition: .5s;width:2.8rem;background-color: #ffffff00;color: #EE7700;border: 0px solid #EE7700;'),
     affix_in: 'transition: .5s;width:4.5rem;background-color: #ffffff00;color: #EE7700;border: 0px solid #EE7700;',
     affix_out: 'transition: .5s;width:2.8rem;background-color: #ffffff00;color: #EE7700;border: 0px solid #EE7700;',
     btn_in: 'background-color: #EE7700;color: #FFF;border: 0px solid #EE7700;',
     btn_out: 'transition: .5s;width:4.5rem;background-color: #ffffff00;color: #EE7700;',
-    path: 'index',
+    path: 'game',
   },
   {
     name: ref(),
-    rame: '搭建',
+    rame: 'Java',
     icon: 'PieChart',
     style: ref('transition: .5s;width:2.8rem;background-color: #ffffff00;color: #0066FF;border: 0px solid #0066FF;'),
     affix_in: 'transition: .5s;width:4.5rem;background-color: #ffffff00;color: #0066FF;border: 0px solid #0066FF;',
@@ -86,8 +86,7 @@ const jump = (btn: any) => {//路由跳转
   <div class="home-box">
     <el-container>
       <img alt="logo" src="@/assets/ango1.png" height="48" width="72" class="logo-img" />
-      <!-- <el-header>
-      </el-header> -->
+ 
       <el-main class="main-box">
         <!-- 浮动导航 -->
         <div class="crt_nai">🐾&nbsp;{{ currentNav }}</div>
@@ -172,10 +171,6 @@ const jump = (btn: any) => {//路由跳转
 
 .home-box {
   height: 100%
-}
-
-.el-header {
-  /* border-bottom: 1px solid rgb(47, 41, 52); */
 }
 
 .el-container {

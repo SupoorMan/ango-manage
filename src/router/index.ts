@@ -16,11 +16,14 @@ const router = createRouter({
           path: '/index',
           name: "index",
           component: () => import('../components/Index.vue')
-        },
-        {
+        },{
           path: '/builder',
           name: "builder",
           component: () => import('../components/Builder.vue')
+        },{
+          path: '/game',
+          name: "game",
+          component: () => import('../components/Game.vue')
         },
       ]
     }, {

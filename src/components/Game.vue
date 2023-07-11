@@ -1,8 +1,8 @@
 <template>
   <div class="builder-box">
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-      <el-tab-pane label="一键生成API文档" name="first">
-        <JavaAutoAPI></JavaAutoAPI>
+      <el-tab-pane label="打豆豆" name="first">
+        
 
       </el-tab-pane>
       <el-tab-pane label="Config" name="second">Config</el-tab-pane>
