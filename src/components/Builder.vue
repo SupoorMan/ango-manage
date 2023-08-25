@@ -14,12 +14,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import JavaAutoAPI from './builder/JavaAutoAPI.vue'
-import type { TabsPaneContext } from 'element-plus'
+// import type { TabsPaneContext } from 'element-plus'
 
 
 const activeName = ref('first')
 
-const handleClick = (tab: TabsPaneContext, event: Event) => {
+const handleClick = (tab: any, event: Event) => {
   console.log(tab, event)
 }
 </script>

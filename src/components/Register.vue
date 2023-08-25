@@ -3,12 +3,12 @@ import axios from '../http/index'
 import router from '../router/index'
 
 import { ref } from 'vue'
-import type { TabsPaneContext } from 'element-plus'
+// import type { TabsPaneContext } from 'element-plus'
 import { RouterLink } from 'vue-router';
 
 const activeName = ref('first')
 
-const handleClick = (tab: TabsPaneContext, event: Event) => {
+const handleClick = (tab: any, event: Event) => {
   console.log(tab, event)
 }
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import headerLight from './HeaderLight.vue';
 import { ref } from 'vue'
 
 const navi = [

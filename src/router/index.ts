@@ -5,17 +5,20 @@ import { Chicken } from '@element-plus/icons-vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
+  routes: [{
+      path: '/', //主页
       name: 'home',
       component: HomeView,
       redirect: "/index",
-      children: [
+      children: [ //子页
         {
           path: '/index',
           name: "index",
           component: () => import('../components/Index.vue')
+        },{
+          path: '/plan',
+          name: "plan",
+          component: () => import('@/views/menu/Plan.vue')
         },{
           path: '/builder',
           name: "builder",
@@ -24,6 +27,14 @@ const router = createRouter({
           path: '/game',
           name: "game",
           component: () => import('../components/Game.vue')
+        },{
+          path: '/uniapp',
+          name: "uniapp",
+          component: () => import('../components/Uniapp.vue')
+        },{
+          path: '/fruitShop',
+          name: "fruitShop",
+          component: () => import('../components/FruitShop.vue')
         },
       ]
     }, {
