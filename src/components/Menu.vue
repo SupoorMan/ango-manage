@@ -10,6 +10,7 @@
           <span class="text">{{ item.label }}</span>
         </a>
       </li>
+      <p v-if="!isMenuShow" class="menuNtn" @click="menuShowOpen">导航</p>
     </ul>
 
     <div class="menuShower" @click="menuShow">
@@ -49,7 +50,7 @@ const menuList = [{
   cls: ref('list'),
   icon: 'iconfont icon-baomihua-01',
   label: 'C++',
-  path: 'plan'
+  path: 'uniapp'
 }, {
   cls: ref('list'),
   icon: 'iconfont icon-bingqilin-01',
@@ -73,28 +74,54 @@ const menuList = [{
 }]
 
 const menuClick = (item: any) => {
+  console.log('menuClick')
   menuList.forEach(n => {
     n.cls.value = 'list';
   })
 
   item.cls.value = 'list active';
-  router.push({ path: item.path })
+  
+  router.push({ path: item.path });
 }
 
-let menuFlag = false;
+let openMenuStatus = 0
 const isOpen = defineEmits(['openMenu']);
 // 放大菜单 通知主组件 改变style
 const openMenu = () => {
-  menuFlag = !menuFlag;
-  isOpen('openMenu', menuFlag);
+  console.log('openMenu')
+  if (openMenuStatus === 0) {//打开
+    openMenuStatus = 1;
+  } else if (openMenuStatus === 1) {//关闭
+    openMenuStatus = 0;
+  }
+  isOpen('openMenu', openMenuStatus);
 }
 
+let isMenuShow = true;
 const navigationClass = ref('navigation');
 // 隐藏菜单
 const menuShow = () => {
-  navigationClass.value = 'navigation-hidden'
-}
+  console.log('menuShow')
+  if (isMenuShow) {
+    navigationClass.value = 'navigation-hidden';
+    isMenuShow = !isMenuShow;
 
+    //改变主组件style
+    openMenuStatus = 0;
+    isOpen('openMenu', 2);
+  }
+}
+// 打开菜单
+const menuShowOpen = () => {
+  console.log('menuShowOpen')
+  if (!isMenuShow) {
+    navigationClass.value = 'navigation';
+    isMenuShow = !isMenuShow;
+
+    //改变主组件style
+    isOpen('openMenu', openMenuStatus);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -116,11 +143,20 @@ const menuShow = () => {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  background: #d92b77;
+  background: #167269;
   width: 75px;
   height: 75px;
   display: flex;
   border-radius: 50%;
+
+  .menuNtn {
+    color: #ffffff;
+    position: absolute;
+    left: 14px;
+    top: 28px;
+    font-size: 20px;
+    cursor: pointer;
+  }
 
   ul li {
     font-size: 8px;
@@ -134,7 +170,7 @@ const menuShow = () => {
     opacity: 1;
     list-style: none;
     position: absolute;
-    left: 40px;
+    left: 52px;
     width: inherit;
     width: 75px;
     height: 75px;
@@ -146,7 +182,7 @@ const menuShow = () => {
 
     a {
       position: absolute;
-      top: 22px;
+      top: 27px;
       left: 7px;
       color: #2f323f;
       font-size: 21px;
