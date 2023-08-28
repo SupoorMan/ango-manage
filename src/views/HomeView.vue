@@ -22,19 +22,28 @@ import Menu from '../components/Menu.vue';
 
 const contextClass = ref('context-close');
 
-const isOpen = (val: boolean) => {
-  if (!val) { //打开菜单
-    contextClass.value = "context-close"
-  } else {
+const isOpen = (val: number) => {
+  console.log('组件传值:' + val)
+  if (val === 1) { //打开菜单
     contextClass.value = "context-open"
+  } else if (val === 0) {
+    contextClass.value = "context-close"
+  } else if (val === 2) {
+    contextClass.value = "context"
   }
 }
 
 </script>
 
 <style lang="scss" scoped>
+.context {
+  margin-left: 0%;
+  height: 100%;
+  transition: 0.5s;
+}
+
 .context-close {
-  margin-left: 10%;
+  margin-left: 9.6%;
   height: 100%;
   transition: 0.5s;
 }
