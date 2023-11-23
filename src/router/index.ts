@@ -16,6 +16,10 @@ const router = createRouter({
           name: "index",
           component: () => import('../components/Index.vue')
         },{
+          path: '/lowcode',
+          name: "lowcode",
+          component: () => import('@/views/LowCode.vue')
+        },{
           path: '/plan',
           name: "plan",
           component: () => import('@/views/menu/Plan.vue')
@@ -28,13 +32,17 @@ const router = createRouter({
           name: "game",
           component: () => import('../components/Game.vue')
         },{
-          path: '/uniapp',
-          name: "uniapp",
-          component: () => import('../components/Uniapp.vue')
+          path: '/productTemplate',
+          name: "productTemplate",
+          component: () => import('../components/ProductTemplate.vue')
         },{
           path: '/fruitShop',
           name: "fruitShop",
           component: () => import('../components/FruitShop.vue')
+        },{
+          path: '/doc',
+          name: "doc",
+          component: () => import('../components/Doc.vue')
         },
       ]
     }, {

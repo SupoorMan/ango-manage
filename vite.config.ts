@@ -14,8 +14,8 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      scss: {
-        additionalData: '@import "@/static/sass/common.scss";'
+      scss: { // 全局样式
+        additionalData: '@import "@/scss/index.scss";'
       }
     }
   }

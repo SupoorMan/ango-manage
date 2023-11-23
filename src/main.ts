@@ -10,7 +10,10 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-// import '@/static/sass/common.scss'
+
+// 全局样式
+// import '@/scss/index.scss'
+
 
 const app = createApp(App)
 

@@ -23,6 +23,7 @@
 import { onMounted, ref } from 'vue'
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 import "@/assets/menu/iconfont.css";
+import { nextTick } from 'process';
 
 const router = useRouter();
 
@@ -33,6 +34,15 @@ onMounted(() => {
   menuToggle?.addEventListener('click', function () {
     navigation?.classList.toggle('active')
   })
+
+  window.onresize = () => {
+    return (() => {
+      if ((window.outerWidth * 0.8) < document.body.clientWidth) {
+        
+      }
+    })()
+  }
+
 })
 
 const menuList = [{
@@ -44,13 +54,13 @@ const menuList = [{
 {
   cls: ref('list'),
   icon: 'iconfont icon-baozi-01',
-  label: '脚本',
-  path: 'plan'
+  label: '没啥',
+  path: 'lowcode'
 }, {
   cls: ref('list'),
   icon: 'iconfont icon-baomihua-01',
-  label: 'C++',
-  path: 'uniapp'
+  label: '商品模板',
+  path: 'productTemplate'
 }, {
   cls: ref('list'),
   icon: 'iconfont icon-bingqilin-01',
@@ -71,24 +81,30 @@ const menuList = [{
   icon: 'iconfont icon-jitui-01',
   label: '其他',
   path: 'fruitShop'
+}, {
+  cls: ref('list'),
+  icon: 'iconfont icon-bingqilin-01',
+  label: '文档',
+  path: 'doc'
 }]
 
 const menuClick = (item: any) => {
-  console.log('menuClick')
+  console.log(item)
   menuList.forEach(n => {
     n.cls.value = 'list';
   })
 
   item.cls.value = 'list active';
-  
-  router.push({ path: item.path });
+
+  nextTick(() => {
+    router.push({ path: item.path });
+  })
 }
 
 let openMenuStatus = 0
 const isOpen = defineEmits(['openMenu']);
 // 放大菜单 通知主组件 改变style
 const openMenu = () => {
-  console.log('openMenu')
   if (openMenuStatus === 0) {//打开
     openMenuStatus = 1;
   } else if (openMenuStatus === 1) {//关闭
@@ -101,7 +117,6 @@ let isMenuShow = true;
 const navigationClass = ref('navigation');
 // 隐藏菜单
 const menuShow = () => {
-  console.log('menuShow')
   if (isMenuShow) {
     navigationClass.value = 'navigation-hidden';
     isMenuShow = !isMenuShow;
@@ -113,7 +128,6 @@ const menuShow = () => {
 }
 // 打开菜单
 const menuShowOpen = () => {
-  console.log('menuShowOpen')
   if (!isMenuShow) {
     navigationClass.value = 'navigation';
     isMenuShow = !isMenuShow;
@@ -148,12 +162,13 @@ const menuShowOpen = () => {
   height: 75px;
   display: flex;
   border-radius: 50%;
+  z-index: 9999;
 
   .menuNtn {
     color: #ffffff;
     position: absolute;
-    left: 14px;
-    top: 28px;
+    left: 12px;
+    top: 24px;
     font-size: 20px;
     cursor: pointer;
   }
@@ -182,7 +197,7 @@ const menuShowOpen = () => {
 
     a {
       position: absolute;
-      top: 27px;
+      top: 24px;
       left: 7px;
       color: #2f323f;
       font-size: 21px;
@@ -295,7 +310,7 @@ const menuShowOpen = () => {
 .navigation ul li {
   list-style: none;
   position: relative;
-  left: -40px;
+  // left: -40px;
   width: inherit;
   height: 76px;
   border-radius: 12px;
@@ -405,18 +420,25 @@ a:hover {
   opacity: 0;
   visibility: hidden;
   transition: .5s;
+  user-select: none;
+}
+
+.navigation ul li.active a {
+  margin-left: 1px;
 }
 
 .navigation.active ul li a .text {
   visibility: visible;
   opacity: 1;
   white-space: nowrap;
+  margin-left: -10px;
 }
 
 .navigation ul li.active a .text {
   color: #fff;
   white-space: nowrap;
-  // transition: .5s;
+  transition: .5s;
+  margin-left: -6px;
 }
 
 .navigation ul li a .icon::before {
