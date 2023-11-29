@@ -1,16 +1,15 @@
 import axios from 'axios'
 // 创建一个 axios 实例
 const service = axios.create({
-	baseURL: 'http://47.96.64.19:7788/ango', // 所有的请求地址前缀部分
-	// baseURL: 'http://127.0.0.1:7788/ango', // 所有的请求地址前缀部分
+	baseURL: 'http://127.0.0.1:7788/mall', // 所有的请求地址前缀部分
 	timeout: 30000, // 请求超时时间毫秒
 	//withCredentials: true, // 异步请求携带cookie
 	headers: {
 		// 设置后端需要的传参类型
-		'Content-Type': 'application/json',
-		'token': '',
+		// 'Content-Type': 'application/json',
+		// 'token': '',
 		'source': 'manage',
-		'X-Requested-With': 'XMLHttpRequest',
+		// 'X-Requested-With': 'XMLHttpRequest',
 	},
 })
 

@@ -6,6 +6,8 @@
             </el-col>
 
             <el-button type="success" @click="dialogVisible = true" class="add">新增</el-button>
+            <el-button type="success" @click="test">新增111</el-button>
+            <el-input v-model="form.cover" type="file" @change="test"/>
         </el-row>
         <el-row :gutter="20" class="context-body">
             <el-table :data="list" stripe style="width: 100%">
@@ -24,7 +26,7 @@
         </el-row>
     </div>
 
-    <el-dialog v-model="dialogVisible" title="商品模板 - 操作" width="30%" :before-close="handleClose">
+    <el-dialog v-model="dialogVisible" title="商品模板 - 操作" width="60%" :before-close="handleClose">
         <el-form :model="form" label-width="120px">
             <el-form-item label="商品名称">
                 <el-input v-model="form.productName" />
@@ -32,6 +34,19 @@
             <el-form-item label="首图">
                 <el-input v-model="form.cover" type="file" />
             </el-form-item>
+
+            <el-form-item label="首图2222">
+                <fileupload></fileupload>
+            </el-form-item>
+
+            <el-form-item label="副图">
+                <el-input v-model="form.images0" type="file" />
+                <el-input v-model="form.images1" type="file" />
+                <el-input v-model="form.images2" type="file" />
+                <el-input v-model="form.images3" type="file" />
+                <el-input v-model="form.images4" type="file" />
+            </el-form-item>
+
             <el-form-item label="简介">
                 <el-input v-model="form.info" type="textarea" />
             </el-form-item>
@@ -93,6 +108,33 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
 import { ElMessageBox } from 'element-plus'
+import fileupload from '@/components/file/Fileupload.vue'
+import axios from '@/http/index'
+
+
+// const fileInput = document.querySelector('#fileInput');
+const fileInput = ref();
+const file = fileInput.value;
+
+const formData = new FormData();
+formData.append('file', fileInput.value);
+
+
+const test = () => {
+    console.log(formData)
+
+    axios.post('/file/upload', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            "source":"manage"
+        }
+    }).then(response => {
+        console.log('上传成功', response.data);
+    }).catch(error => {
+        console.error('上传失败', error);
+    });
+}
+
 
 const dialogVisible = ref(false)
 
@@ -110,6 +152,8 @@ interface Pt {
     id: number
     productName: string
     cover: string
+
+
     price: string
 }
 

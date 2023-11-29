@@ -20,12 +20,12 @@
 <style scoped>
 .main-box{
     height: 1800px;
-    color: aliceblue;
+    color: rgb(35, 36, 37);
 }
 
 p {
     font-size: 24px;
-    color: #ffffff;
+    color: #292525;
 }
 
 p span {

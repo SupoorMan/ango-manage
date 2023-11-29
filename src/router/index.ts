@@ -16,13 +16,13 @@ const router = createRouter({
           name: "index",
           component: () => import('../components/Index.vue')
         },{
+          path: '/product',
+          name: "product",
+          component: () => import('../views/Product.vue')
+        },{
           path: '/lowcode',
           name: "lowcode",
           component: () => import('@/views/LowCode.vue')
-        },{
-          path: '/plan',
-          name: "plan",
-          component: () => import('@/views/menu/Plan.vue')
         },{
           path: '/builder',
           name: "builder",
