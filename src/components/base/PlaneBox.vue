@@ -1,7 +1,7 @@
 <template>
     <div class="main-box">
         <div class="title">
-            <span>💫 进行中</span>
+            <span>💫 进行中 - 10项</span>
 
             <button class="add">新增</button>
         </div>
@@ -26,8 +26,9 @@
                 </el-table-column>
 
                 <el-table-column prop="date" label="项目" sortable />
+                <el-table-column prop="name" label="负责人" />
                 <el-table-column prop="name" label="开始时间" sortable />
-                <el-table-column prop="address" label="结束时间" sortable />
+                <el-table-column prop="address" label="进度" sortable />
 
                 <el-table-column align="right">
                     <template #header>
@@ -39,6 +40,7 @@
                             @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
                     </template>
                 </el-table-column>
+                
             </el-table>
         </div>
 
@@ -165,6 +167,14 @@ const load = (
         padding-top: 8px;
         padding-left: 8px;
         padding-right: 8px;
+
+        // .progress{
+        //     background-color: chocolate;
+        // }
     }
+
+    .progress{
+            background-color: chocolate;
+        }
 }
 </style>
