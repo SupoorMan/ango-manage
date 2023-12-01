@@ -28,7 +28,7 @@
                 <el-table-column prop="date" label="项目" sortable />
                 <el-table-column prop="name" label="负责人" />
                 <el-table-column prop="name" label="开始时间" sortable />
-                <el-table-column prop="address" label="进度" sortable />
+                <el-table-column prop="address" label="BUG" sortable />
 
                 <el-table-column align="right">
                     <template #header>
@@ -40,8 +40,9 @@
                             @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
                     </template>
                 </el-table-column>
-                
             </el-table>
+
+            <el-pagination small background layout="prev, pager, next" :total="50" class="page" />
         </div>
 
 
@@ -117,26 +118,26 @@ const handleDelete = (index: number, row: User) => {
     console.log(index, row)
 }
 const load = (
-  row: User,
-  treeNode: unknown,
-  resolve: (date: User[]) => void
+    row: User,
+    treeNode: unknown,
+    resolve: (date: User[]) => void
 ) => {
-  setTimeout(() => {
-    resolve([
-      {
-        id: 31,
-        date: '2016-05-01',
-        name: 'wangxiaohu',
-        address: 'No. 189, Grove St, Los Angeles',
-      },
-      {
-        id: 32,
-        date: '2016-05-01',
-        name: 'wangxiaohu',
-        address: 'No. 189, Grove St, Los Angeles',
-      },
-    ])
-  }, 1000)
+    setTimeout(() => {
+        resolve([
+            {
+                id: 31,
+                date: '2016-05-01',
+                name: 'wangxiaohu',
+                address: 'No. 189, Grove St, Los Angeles',
+            },
+            {
+                id: 32,
+                date: '2016-05-01',
+                name: 'wangxiaohu',
+                address: 'No. 189, Grove St, Los Angeles',
+            },
+        ])
+    }, 1000)
 }
 </script>
 
@@ -168,13 +169,16 @@ const load = (
         padding-left: 8px;
         padding-right: 8px;
 
-        // .progress{
-        //     background-color: chocolate;
-        // }
+        .page {
+            width: fit-content;
+            margin-bottom: 10px;
+            position: relative;
+            left: 88%;
+        }
     }
 
-    .progress{
-            background-color: chocolate;
-        }
+    .progress {
+        background-color: chocolate;
+    }
 }
 </style>
