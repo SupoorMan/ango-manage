@@ -1,7 +1,3 @@
-
-<script setup lang="ts">
-</script>
-
 <template>
     <div class="main-box">
         <p>
@@ -11,14 +7,28 @@
             <span>a test.</span>
         </p>
 
-        <!-- <el-affix :offset="120">
-            <el-button type="primary">Offset top 120px</el-button>
-        </el-affix> -->
+        <button @click="test">test</button>
     </div>
 </template>
+<script setup lang="ts">
 
-<style scoped>
-.main-box{
+import request from '../http/index';
+
+const test = () => {
+
+    let param = {
+        "username": "18767136923",
+        "password": "123456"
+    }
+
+    request.post('/test/demo1', param).then(res => {
+        console.log(res)
+    })
+}
+
+</script>
+<style lang="scss" scoped>
+.main-box {
     height: 1800px;
     color: rgb(35, 36, 37);
 }
@@ -58,4 +68,5 @@ p span:nth-child(4) {
         opacity: 1;
         transform: translateY(0);
     }
-}</style>
+}
+</style>
