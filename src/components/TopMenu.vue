@@ -1,38 +1,62 @@
 <template>
   <div class="context-top-menu">
-    <div class="logo">码仔</div>
-    <div class="menu">菜单</div>
-
-    <AngoSelect class="ango-select"></AngoSelect>
+    <div class="logo" @click="coder">㎡</div>
+    <AngoSelect
+      class="menu"
+      :select-name="select0"
+      :select-list="selectList0"
+      @get-top-menu-path="getTopMenuPath"
+    ></AngoSelect>
   </div>
 </template>
-  
-<script>
-import AngoSelect from '@/components/AngoSelect.vue'
 
-export default {
-  name: 'TopMenu',
-  props: {
-    msg: String
+<script setup>
+import AngoSelect from "@/components/AngoSelect.vue";
+import router from "@/router";
+import { ref } from "vue";
+
+const select0 = ref("新视见");
+const selectList0 = [
+  {
+    index: 0,
+    value: "招商",
+    path: "/zhaoshang",
   },
-  components:{
-    AngoSelect
-  }
+  {
+    index: 1,
+    value: "财务",
+    path: "/caiwu",
+  },
+  {
+    index: 2,
+    value: "表单📄",
+    path: "/forms",
+  },
+];
+
+const getTopMenuPath = (item) => {
+  router.push(item.path)
+
+  console.log("接收数据：" + item);
+};
+const coder = ()=>{
+  router.push("/coder")
 }
 </script>
-  
+
 <style lang="scss" scoped>
 .context-top-menu {
   height: 48px;
   padding-left: 20px;
   color: #dcdcdc;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   display: flex;
   align-items: center;
 
   .logo {
-    color: #FFD700;
+    color: #ffd700;
     flex: 1;
+    user-select: none;
   }
 
   .menu {
@@ -40,9 +64,8 @@ export default {
     flex: 4;
   }
 
-  .ango-select{
+  .ango-select {
     flex: 1;
   }
 }
 </style>
-  

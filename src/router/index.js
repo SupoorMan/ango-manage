@@ -1,22 +1,47 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "../views/Home.vue";
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: Home
+    path: "/",
+    redirect: "/home",
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
-]
+  {
+    path: "/home",
+    name: "home",
+    component: Home,
+    children: [
+      {
+        path: "/coder",
+        component: () => import("../views/Coder.vue"),
+      },
+      {
+        path: "/xinshijian",
+        component: () => import("../views/xinshijian/XinShiJian.vue"),
+        redirect: "/zhaoshang",
+        children: [
+          {
+            path: "/zhaoshang",
+            component: () =>
+              import("../views/xinshijian/zhaoshang/ZhaoShang.vue"),
+          },
+          {
+            path: "/caiwu",
+            component: () => import("../views/xinshijian/caiwu/CaiWu.vue"),
+          },
+          {
+            path: "/forms",
+            component: () => import("../views/xinshijian/forms/Forms.vue"),
+          },
+        ],
+      },
+    ],
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
