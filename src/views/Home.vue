@@ -1,31 +1,40 @@
 <template>
-  <TopMenu></TopMenu>
+  <TopMenu @openLeftMenu="openLeftMenu" @toCoder="openCoder"></TopMenu>
 
   <div class="context">
-    <LeftMenu class="left-menu"></LeftMenu>
+    <LeftMenu :class="leftMenuClass" :current-top-menu="currentTopMenu"></LeftMenu>
 
     <div class="body">
-        <RouterView></RouterView>
+      <RouterView></RouterView>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import TopMenu from "@/components/TopMenu.vue";
 import LeftMenu from "@/components/LeftMenu.vue";
 import { RouterView } from "vue-router";
+import { ref } from "vue";
 
-export default {
-  name: "HelloWorld",
-  components: {
-    TopMenu,
-    LeftMenu,
-    RouterView
-},
-  props: {
-    msg: String,
-  },
-};
+const currentTopMenu = ref({}) //父传子
+const leftMenuClass = ref('left-menu')
+const openLeftMenu = (item) => {//接收 子传父
+  if (item.leftMenu) {
+    leftMenuClass.value = 'left-menu-open'
+  } else {
+    leftMenuClass.value = 'left-menu'
+  }
+
+  currentTopMenu.value = item
+}
+
+const openCoder = (open) => {//接收 子传父
+  if (!open) {
+    leftMenuClass.value = 'left-menu-open'
+  } else {
+    leftMenuClass.value = 'left-menu'
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -39,6 +48,14 @@ export default {
     flex: 1;
     height: 100%;
     margin-left: -10%;
+    transition: .8s;
+  }
+
+  .left-menu-open {
+    flex: 1;
+    height: 100%;
+    margin-left: 0;
+    transition: 1s;
   }
 
   .body {

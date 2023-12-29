@@ -1,7 +1,5 @@
 <template>
     <div class="context-xinshijian">
-        新视见
-
         <RouterView></RouterView>
     </div>
   </template>
@@ -14,7 +12,7 @@
   <style lang="scss" scoped>
   .context-xinshijian {
     background-color: aliceblue;
-    
+    border-top: 1px solid #ffd700;
   }
   </style>
   

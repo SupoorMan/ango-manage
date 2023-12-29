@@ -48,7 +48,7 @@ const setTopMenuPath = (item) => {
   .unselect {
     width: 60px;
     height: 24px;
-    background-color: #1e1e1e;
+    background-color: #363c4e;
     user-select: none;
     text-align-last: center;
     line-height: 24px;
@@ -59,18 +59,18 @@ const setTopMenuPath = (item) => {
   .select {
     width: 60px;
     height: 24px;
-    background-color: #1e1e1e;
+    background-color: #363c4e;
     user-select: none;
     text-align-last: center;
     line-height: 24px;
     position: absolute;
     top: 12px;
-    color: aliceblue;
+    color: #fff;
     border-bottom: 1px solid aliceblue;
   }
 
   .option {
-    color: aliceblue;
+    color: #fff;
     width: 60px;
     top: 42px;
     position: relative;
@@ -78,7 +78,7 @@ const setTopMenuPath = (item) => {
     text-align-last: center;
     line-height: 30px;
     user-select: none;
-    background: linear-gradient(0, #1e1e1e, rgba(0, 0, 0, 0));
+    background: linear-gradient(0, #363c4e, rgba(0, 0, 0, 0));
   }
 }
 </style>
