@@ -8,6 +8,7 @@
     >
       <span :class="item.class"></span>
       <span>{{ item.name }}</span>
+      <span v-if="selected">🍓</span>
     </div>
   </div>
 </template>
@@ -28,8 +29,8 @@ const clickMenu = (item) => {
   //子传父
   emit("get-left-menu", item);
 
-  //缓存当前菜单localstrong
-  
+  //TODO xxxx
+  item.selected = true;
 };
 
 watch(props, (newValue, oldValue) => {
@@ -48,12 +49,14 @@ const menuJump = (path) => {
           name: "投资人",
           path: "/people",
           class: "iconfont icon-shangye- iconbox",
+          selected: false
         },
         {
           index: 1,
           name: "投资门店",
           path: "/project",
           class: "iconfont icon-shangjiaguanli iconbox",
+          selected: false
         },
       ];
       break;
@@ -70,6 +73,7 @@ const menuJump = (path) => {
 
 .context-left-menu {
   background-color: #1e2436;
+  padding-top: 14px;
 
   .btn-box {
     background-color: rgba(0, 0, 0, 0);

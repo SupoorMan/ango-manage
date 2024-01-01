@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const openOption = ref(false);
 const selectClass = ref("unselect");
@@ -25,6 +25,13 @@ const selectClass = ref("unselect");
 const props = defineProps({
   selectName: String,
   selectList: Array,
+  selected: Boolean,
+});
+
+watch(props, (n, o) => {
+  if (props.selected) {
+    selectClass.value = "select";
+  }
 });
 
 const clickItem = () => {
@@ -33,9 +40,9 @@ const clickItem = () => {
 };
 
 //getTopMenuPath
-const emit = defineEmits({ "get-top-menu-path": String });
+const emit = defineEmits({ "get-top-menu": Object });
 const setTopMenuPath = (item) => {
-  emit("get-top-menu-path", item);
+  emit("get-top-menu", item);
 
   openOption.value = false; //可省略
 };

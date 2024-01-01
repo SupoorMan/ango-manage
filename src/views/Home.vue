@@ -18,10 +18,21 @@
 import TopMenu from "@/components/TopMenu.vue";
 import LeftMenu from "@/components/LeftMenu.vue";
 import { RouterView } from "vue-router";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 const currentTopMenu = ref({}); //父传子
 const leftMenuClass = ref("left-menu");
+
+onMounted(() => {
+  let tm = localStorage.getItem("tm");
+  if (tm) {
+    tm = JSON.parse(tm);
+    if (tm.leftMenu) {
+      openLeftMenu(tm)
+    }
+  }
+});
+
 const openLeftMenu = (item) => {
   //接收 子传父
   if (item.leftMenu) {
@@ -42,9 +53,9 @@ const openCoder = (open) => {
   }
 };
 
-const getLeftMenu = (item) => { //Body路由页面
+const getLeftMenu = (item) => {
+  //Body路由页面
   console.log(item);
-  //localStorage.setItem('li')
 };
 </script>
 
