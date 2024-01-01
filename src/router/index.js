@@ -22,8 +22,19 @@ const routes = [
         children: [
           {
             path: "/zhaoshang",
-            component: () =>
-              import("../views/xinshijian/zhaoshang/ZhaoShang.vue"),
+            // component: () => import("../views/xinshijian/zhaoshang/ZhaoShang.vue"),
+            redirect: "/people",
+            children: [
+              {
+                path: "/people",
+                component: () =>
+                  import("../views/xinshijian/zhaoshang/Person.vue"),
+              },{
+                path: "/project",
+                component: () =>
+                  import("../views/xinshijian/zhaoshang/Shop.vue"),
+              }
+            ],
           },
           {
             path: "/caiwu",

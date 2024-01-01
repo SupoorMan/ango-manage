@@ -2,7 +2,11 @@
   <TopMenu @openLeftMenu="openLeftMenu" @toCoder="openCoder"></TopMenu>
 
   <div class="context">
-    <LeftMenu :class="leftMenuClass" :current-top-menu="currentTopMenu"></LeftMenu>
+    <LeftMenu
+      :class="leftMenuClass"
+      :current-top-menu="currentTopMenu"
+      @get-left-menu="getLeftMenu"
+    ></LeftMenu>
 
     <div class="body">
       <RouterView></RouterView>
@@ -16,25 +20,32 @@ import LeftMenu from "@/components/LeftMenu.vue";
 import { RouterView } from "vue-router";
 import { ref } from "vue";
 
-const currentTopMenu = ref({}) //父传子
-const leftMenuClass = ref('left-menu')
-const openLeftMenu = (item) => {//接收 子传父
+const currentTopMenu = ref({}); //父传子
+const leftMenuClass = ref("left-menu");
+const openLeftMenu = (item) => {
+  //接收 子传父
   if (item.leftMenu) {
-    leftMenuClass.value = 'left-menu-open'
+    leftMenuClass.value = "left-menu-open";
   } else {
-    leftMenuClass.value = 'left-menu'
+    leftMenuClass.value = "left-menu";
   }
 
-  currentTopMenu.value = item
-}
+  currentTopMenu.value = item;
+};
 
-const openCoder = (open) => {//接收 子传父
+const openCoder = (open) => {
+  //接收 子传父
   if (!open) {
-    leftMenuClass.value = 'left-menu-open'
+    leftMenuClass.value = "left-menu-open";
   } else {
-    leftMenuClass.value = 'left-menu'
+    leftMenuClass.value = "left-menu";
   }
-}
+};
+
+const getLeftMenu = (item) => { //Body路由页面
+  console.log(item);
+  //localStorage.setItem('li')
+};
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +59,7 @@ const openCoder = (open) => {//接收 子传父
     flex: 1;
     height: 100%;
     margin-left: -10%;
-    transition: .8s;
+    transition: 0.8s;
   }
 
   .left-menu-open {
