@@ -55,7 +55,7 @@ const openCoder = (open) => {
 
 const getLeftMenu = (item) => {
   //Body路由页面
-  console.log(item);
+  // console.log(item);
 };
 </script>
 

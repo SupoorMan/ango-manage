@@ -15,6 +15,12 @@ module.exports = defineConfig({
       }
     }
   },
+  chainWebpack(config) {
+		config.plugin('html').tap((args) => { //标题
+			args[0].title = '🍉🍋🍊🍌🍑🍍🍎';
+			return args;
+		})
+	},
   css: {
     loaderOptions: {
       scss: {
