@@ -22,15 +22,14 @@ const routes = [
         children: [
           {
             path: "/zhaoshang",
-            // component: () => import("../views/xinshijian/zhaoshang/ZhaoShang.vue"),
-            redirect: "/people",
+            component: () => import("../views/xinshijian/zhaoshang/ZhaoShang.vue"),
             children: [
               {
                 path: "/people",
                 component: () =>
                   import("../views/xinshijian/zhaoshang/Person.vue"),
               },{
-                path: "/project",
+                path: "/fruitshop",
                 component: () =>
                   import("../views/xinshijian/zhaoshang/Shop.vue"),
               }

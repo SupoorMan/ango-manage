@@ -42,8 +42,16 @@ const clickItem = () => {
 //getTopMenuPath
 const emit = defineEmits({ "get-top-menu": Object });
 const setTopMenuPath = (item) => {
-  emit("get-top-menu", item);
+  let tm = localStorage.getItem("tm");
+  if (tm) {
+    tm = JSON.parse(tm);
+    if (item.path === tm.path) {
+      openOption.value = false;
+      return;
+    }
+  }
 
+  emit("get-top-menu", item);
   openOption.value = false; //可省略
 };
 </script>
@@ -55,7 +63,7 @@ const setTopMenuPath = (item) => {
   .unselect {
     width: 60px;
     height: 24px;
-    background-color: #363c4e;
+    // background-color: #363c4e00;
     user-select: none;
     text-align-last: center;
     line-height: 24px;
@@ -66,18 +74,18 @@ const setTopMenuPath = (item) => {
   .select {
     width: 60px;
     height: 24px;
-    background-color: #363c4e;
+    // background-color: #363c4e00;
     user-select: none;
     text-align-last: center;
     line-height: 24px;
     position: absolute;
     top: 12px;
-    color: #fff;
-    border-bottom: 1px solid aliceblue;
+    color: #dcdcdc;
+    border-bottom: 1px solid #ffd700;
   }
 
   .option {
-    color: #fff;
+    color: #dcdcdc;
     width: 60px;
     top: 42px;
     position: relative;

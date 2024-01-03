@@ -11,8 +11,6 @@
   
   <style lang="scss" scoped>
   .context-xinshijian {
-    background-color: aliceblue;
-    border-top: 1px solid #ffd700;
   }
   </style>
   

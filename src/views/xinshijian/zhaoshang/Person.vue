@@ -1,5 +1,5 @@
 <template>
-    <div class="context-zhaoshang">
+    <div class="context-person">
         renyuan
     </div>
   </template>
@@ -10,7 +10,7 @@
   </script>
   
   <style lang="scss" scoped>
-  .context-zhaoshang {
+  .context-person {
     background-color: aliceblue;
   
   }

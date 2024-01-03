@@ -81,9 +81,10 @@ const coder = () => {
   height: 48px;
   padding-left: 20px;
   color: #dcdcdc;
-  background-color: #363c4e;
+  background-color: #454545;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #FFFFFF;
 
   .logo {
     color: #ffd700;

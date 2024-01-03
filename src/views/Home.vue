@@ -8,7 +8,7 @@
       @get-left-menu="getLeftMenu"
     ></LeftMenu>
 
-    <div class="body">
+    <div class="home-body">
       <RouterView></RouterView>
     </div>
   </div>
@@ -78,11 +78,12 @@ const getLeftMenu = (item) => {
     height: 100%;
     margin-left: 0;
     transition: 1s;
+    border-top: 1px solid #1E1E1E;
   }
 
-  .body {
+  .home-body {
     flex: 10;
-    background-color: bisque;
+    background-color: #1E1E1E;
     width: 100%;
     height: 100%;
   }
