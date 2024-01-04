@@ -95,21 +95,22 @@ const menuJump = (path) => {
 @import url("@/assets/menu/iconfont.css");
 
 .context-left-menu {
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   padding-top: 10px;
+  border-right: 1px solid #ffd700;
 
   .btn-box {
-    background-color: rgba(0, 0, 0, 0);
     height: 60px;
     line-height: 60px;
     font-size: 18px;
-    margin-left: 24px;
     color: #929292;
     cursor: pointer;
     user-select: none;
+    overflow: hidden;
 
     .iconbox {
       margin-right: 6px;
+      margin-left: 24px;
     }
 
     .spaned {
@@ -118,11 +119,25 @@ const menuJump = (path) => {
 
     .bottom-line {
       position: relative;
-      right: -50px;
+      left: 204px;
       top: -2px;
       height: 1px;
-      width: 68%;
+      width: 0%;
       background-color: #ffd700;
+      animation: lineToLeft 1s ease-out 0s 1 normal forwards;
+      
+    }
+
+    @keyframes lineToLeft {
+      0% {
+        left: 204px;
+        width: 0%;
+      }
+
+      100% {
+        left: 64px;
+        width: 68%;
+      }
     }
   }
 }

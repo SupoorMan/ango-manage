@@ -1,15 +1,12 @@
 <template>
-  <TopMenu @openLeftMenu="openLeftMenu" @toCoder="openCoder"></TopMenu>
+  <div class="home-box">
+    <TopMenu @openLeftMenu="openLeftMenu" @toCoder="openCoder"></TopMenu>
+    <div class="context">
+      <LeftMenu :class="leftMenuClass" :current-top-menu="currentTopMenu" @get-left-menu="getLeftMenu"></LeftMenu>
 
-  <div class="context">
-    <LeftMenu
-      :class="leftMenuClass"
-      :current-top-menu="currentTopMenu"
-      @get-left-menu="getLeftMenu"
-    ></LeftMenu>
-
-    <div class="home-body">
-      <RouterView></RouterView>
+      <div class="home-body">
+        <RouterView></RouterView>
+      </div>
     </div>
   </div>
 </template>
@@ -60,32 +57,35 @@ const getLeftMenu = (item) => {
 </script>
 
 <style lang="scss" scoped>
-.context {
-  background-color: rgb(232, 241, 238);
-  display: flex;
-  align-items: center;
+.home-box {
   height: 100%;
 
-  .left-menu {
-    flex: 1;
+  .context {
+    display: flex;
+    align-items: center;
     height: 100%;
-    margin-left: -10%;
-    transition: 0.8s;
-  }
 
-  .left-menu-open {
-    flex: 1;
-    height: 100%;
-    margin-left: 0;
-    transition: 1s;
-    border-top: 1px solid #1E1E1E;
-  }
+    .left-menu {
+      flex: 1;
+      height: 100%;
+      margin-left: -10%;
+      transition: 0.8s;
+    }
 
-  .home-body {
-    flex: 10;
-    background-color: #1E1E1E;
-    width: 100%;
-    height: 100%;
+    .left-menu-open {
+      flex: 1;
+      height: 100%;
+      margin-left: 0;
+      transition: 1s;
+      border-top: 1px solid #1E1E1E;
+    }
+
+    .home-body {
+      flex: 10;
+      background-color: #1E1E1E;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>

@@ -16,6 +16,7 @@
 import AngoSelect from "@/components/AngoSelect.vue";
 import router from "@/router";
 import { onMounted, ref } from "vue";
+import api from '@/http/index.ts'
 
 const openCoder = ref(false);
 const selected = ref(false);
@@ -41,6 +42,10 @@ const selectList0 = [
     leftMenu: false,
   },
 ];
+
+const menuApi = ()=>{
+  api.get('/')
+}
 
 onMounted(() => {
   let tm = localStorage.getItem("tm");
@@ -73,6 +78,8 @@ const coder = () => {
   router.push("/coder");
 
   toCoder();
+  localStorage.removeItem('tm')
+  localStorage.removeItem('lm')
 };
 </script>
 
@@ -84,7 +91,7 @@ const coder = () => {
   background-color: #454545;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #FFFFFF;
+  border-bottom: 1px solid #ffd700;
 
   .logo {
     color: #ffd700;

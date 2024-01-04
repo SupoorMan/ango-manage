@@ -14,6 +14,11 @@ const routes = [
       {
         path: "/coder",
         component: () => import("../views/Coder.vue"),
+        children: [{
+          path: "/menu",
+          component: () => import("../views/Menu.vue"),
+        }
+        ]
       },
       {
         path: "/xinshijian",
@@ -28,7 +33,7 @@ const routes = [
                 path: "/people",
                 component: () =>
                   import("../views/xinshijian/zhaoshang/Person.vue"),
-              },{
+              }, {
                 path: "/fruitshop",
                 component: () =>
                   import("../views/xinshijian/zhaoshang/Shop.vue"),

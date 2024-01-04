@@ -1,18 +1,31 @@
 <template>
-    <div class="context-coder">
-        Coder
+  <div class="context-coder">
+    <AngoButton :bname="'菜单设置'" :bcolor="'#000'" @click="toMenu"></AngoButton>
+
+    <div class="coder-body">
+      <RouterView></RouterView>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script setup>
-  import { ref } from 'vue';
+<script setup>
+import { ref } from 'vue';
+import router from "@/router";
+import AngoButton from '@/components/AngoButton.vue';
+
+const toMenu = () => {
+  router.push('/menu')
+}
+</script>
   
-  </script>
-  
-  <style lang="scss" scoped>
-  .context-coder {
-    background-color: aliceblue;
-  
+<style lang="scss" scoped>
+.context-coder {
+  background-color: #f0f8ff;
+  height: 100%;
+
+  .coder-body{
+    height: 100%;
   }
-  </style>
+}
+</style>
   
