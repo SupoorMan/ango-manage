@@ -5,12 +5,24 @@
         <AngoInput :label="item.label"></AngoInput>
       </span>
 
+      <AngoButton :bname="'新增'" :bcolor="'#1E1E1E'" class="add-btn" @click="openEdit = true"></AngoButton>
       <AngoButton :bname="'查询'" :bcolor="'#1E1E1E'" class="search-btn"></AngoButton>
     </div>
 
     <div class="body">
       <PageList></PageList>
-      
+    </div>
+
+
+    <div class="right-box" v-if="openEdit">
+      <div class="title">水果店操作</div>
+
+      <div class="form">
+        <AngoInput :label="'名称'"></AngoInput>
+        <AngoInput :label="'地址'"></AngoInput>
+        <AngoInput :label="'图片'"></AngoInput>
+        <AngoInput :label="'详情说明'"></AngoInput>
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +33,7 @@ import PageList from '@/components/PageList.vue';
 import AngoInput from '@/components/AngoInput.vue';
 import AngoButton from '@/components/AngoButton.vue';
 
+const openEdit = ref(false)
 
 const head = [{
   id: 0,
@@ -104,14 +117,33 @@ const param = ref({})
     height: auto;
     padding: 8px;
 
+    .add-btn {
+      position: absolute;
+      right: 90px;
+      // background-color: #FFD700;
+    }
+
     .search-btn {
       position: absolute;
       right: 10px;
+      // background-color: #FFD700;
     }
   }
 
   .body {
     // background-color: wheat;
+  }
+
+  .right-box {
+    background-color: antiquewhite;
+    color: #2d2d2d;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 40%;
+    height: 100%;
+    transition: 2s;
+    padding: 10px;
   }
 }
 </style>

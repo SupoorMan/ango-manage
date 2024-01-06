@@ -1,17 +1,11 @@
 <template>
   <div class="context-menu">
     <div class="left-box">
-      <AngoInput :label="'名称'"></AngoInput>
+      <AngoInput :label="'一级菜单名称'" :label-width="84"></AngoInput>
     </div>
     <div class="midden-line">1</div>
     <div class="right-box">
-      <draggable class="draggable" :list="list" item-key="id" ghost-class="ghost" group="list">
-        <template #item="{ element  }">
-          <div class="node1">
-            {{ element.name }}
-          </div>
-        </template>
-      </draggable>
+      <div class="demo" draggable="true">123</div>
     </div>
   </div>
 </template>
@@ -19,7 +13,6 @@
 <script setup>
 import { ref, onMounted, reactive } from "vue";
 import AngoInput from "@/components/AngoInput.vue";
-import draggable from "vuedraggable";
 
 const list = [
   { name: "John", id: 0 },
@@ -48,18 +41,16 @@ const list = [
     background-color: rgb(226, 187, 159);
     flex: 16;
 
-    .draggable {
-      height: 100%;
-      background-color: #c2c7cb;
-
-      .node1 {
-        color: black;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        line-height: 40px;
-        text-align: center;
-      }
+    .demo{
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: chocolate;
+      line-height: 50px;
+      text-align: center;
+      user-select: none;
+      margin-top: 20px;
+      margin-left: 20px;
     }
   }
 }
