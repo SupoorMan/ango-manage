@@ -1,6 +1,14 @@
 <template>
   <span class="context-ango-input">
-    <input type="text" class="input-label" :value="props.label" :style="'width:' + props.labelWidth + 'px;'" readonly>
+    <input
+      type="text"
+      class="input-label"
+      :value="props.label"
+      :style="
+        'width:' + props.labelWidth + 'px;background-color:' + props.labelColor
+      "
+      readonly
+    />
     <input type="text" class="input-value" />
   </span>
 </template>
@@ -11,7 +19,8 @@ import { ref } from "vue";
 const props = defineProps({
   //接收 父传子
   label: String,
-  labelWidth: Number
+  labelWidth: Number,
+  labelColor: String,
 });
 </script>
 
@@ -20,6 +29,7 @@ const props = defineProps({
   margin-bottom: 4px;
   margin-right: 4px;
   line-height: 24px;
+  margin-right: 10px;
 
   input:focus {
     outline: none;
@@ -32,8 +42,8 @@ const props = defineProps({
     border-radius: 4px 0px 0px 4px;
     cursor: default;
     line-height: 24px;
-    background-color: #1E1E1E;
-    color: #ffffff;
+    background-color: #2d2d2d;
+    color: #dcdcdc;
     outline: none;
     border: none;
   }

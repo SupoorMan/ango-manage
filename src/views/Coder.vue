@@ -1,6 +1,7 @@
 <template>
   <div class="context-coder">
-    <AngoButton :bname="'菜单设置'" :bcolor="'#000'" @click="toMenu"></AngoButton>
+    <AngoButton :bname="'菜单设置'" :bcolor="'#000'" @click="toMenu"
+     class="menu-set"></AngoButton>
 
     <div class="coder-body">
       <RouterView></RouterView>
@@ -20,8 +21,13 @@ const toMenu = () => {
   
 <style lang="scss" scoped>
 .context-coder {
-  background-color: #f0f8ff;
-  height: 100%;
+  background-color: #2d2d2d;
+  height: 100%;//test
+  
+  .menu-set{
+    margin-left: 10px;
+    line-height: 28px;
+  }
 
   .coder-body{
     height: 100%;

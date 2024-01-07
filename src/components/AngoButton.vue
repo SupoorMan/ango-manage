@@ -24,8 +24,7 @@ const btnUp = () => {
 <style lang="scss" scoped>
 .context-ango-button {
   color: #1E1E1E;
-  background-color: #dcdcdc;
-  width: 70px;
+  background-color: #5e3b00;
   height: 24px;
   cursor: default;
   border-radius: 4px;
@@ -39,7 +38,7 @@ const btnUp = () => {
 .context-ango-button-down {
   color: #1E1E1E;
   background-color: #929292;
-  width: 70px;
+  // width: 70px;
   height: 24px;
   cursor: default;
   border-radius: 4px;
